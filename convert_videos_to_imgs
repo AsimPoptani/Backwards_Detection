@@ -1,0 +1,19 @@
+#!/bin/bash
+sudo apt update
+sudo apt install -y ffmpeg
+mkdir -p test_images
+mkdir -p trainning_images
+TEST_VIDEOS= $(ls test_videos/ | grep .mp4)
+TRAINNING_VIDEOS=$(ls trainning_videos/ | grep .mp4)
+for FILE in $TEST_VIDEOS
+do
+    FILENAME="${FILE:0:-4}"
+    mkdir -p test_images/$FILENAME
+    ffmpeg -threads 8 -i test_videos/$FILE test_images/$FILENAME/%08d.png
+done
+for FILE in $TRAINNING_VIDEOS
+do
+    FILENAME="${FILE:0:-4}"
+    mkdir -p trainning_images/$FILENAME
+    ffmpeg -threads 8 -i trainning_videos/$FILE trainning_images/$FILENAME/%08d.png
+done
