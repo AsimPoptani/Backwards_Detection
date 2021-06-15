@@ -10,7 +10,7 @@ def get_image_info(image_path):
     # Name
     image_name=image_path.split("/")[-1]
     # {imageID , Directory, size}
-    return {"image_id":image_name, "dir":image_dir, "height":800, "width":1280}
+    return {"image_id":image_name, "dir":image_dir, "height":1080, "width":1920}
 
 def get_images_to_dict(directory='./',search="*.png"):
     images=[]
